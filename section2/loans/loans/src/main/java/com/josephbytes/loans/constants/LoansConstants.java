@@ -1,15 +1,17 @@
-package com.josephbytes.accounts.constants;
+package com.josephbytes.loans.constants;
 
-public class AccountConstants {
-    private AccountConstants() {
+public class LoansConstants {
+
+    private LoansConstants() {
     }
 
-    public static final String ACCOUNT_CREATED = "Account created successfully";
-    public static final String ACCOUNT_UPDATED = "Account updated successfully";
-    public static final String ACCOUNT_DELETED = "Account deleted successfully";
-    public static final String ACCOUNT_NOT_FOUND = "Account not found";
-    public static final String SAVINGS = "Savings";
-    public static final String ADDRESS = "1234 Main St, New York, NY 10001";
+    public static final String LOAN_ACCOUNT_TYPE = "LOAN";
+    public static final String LOAN_ACCOUNT_DESC = "Loan Account";
+    public static final String LOAN_ACCOUNT_CREATED = "Loan Account Created";
+    public static final String LOAN_ACCOUNT_UPDATED = "Loan Account Updated";
+    public static final String LOAN_ACCOUNT_DELETED = "Loan Account Deleted";
+    public static final String LOAN_ACCOUNT_NOT_FOUND = "Loan Account Not Found";
+
     public static final String STATUS_201 = "201";
     public static final String STATUS_200 = "200";
     public static final String STATUS_400 = "400";
@@ -17,8 +19,8 @@ public class AccountConstants {
     public static final String STATUS_403 = "403";
     public static final String STATUS_404 = "404";
     public static final String STATUS_417 = "417";
-
     public static final String STATUS_500 = "500";
+
 
     public static final String MESSAGE_200 = "Request processed successfully";
     public static final String MESSAGE_201 = "Resource created successfully";
@@ -31,5 +33,6 @@ public class AccountConstants {
     public static final String MESSAGE_417_DELETE = "Delete Operation failed : please try again or contact Dev Team";
 
     public static final String MESSAGE_500 = "An error occurred. Please try again later or contact Dev Team";
+
 
 }
