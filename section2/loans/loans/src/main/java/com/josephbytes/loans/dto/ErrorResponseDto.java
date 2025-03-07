@@ -1,8 +1,7 @@
-package com.josephbytes.accounts.dto;
+package com.josephbytes.loans.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;

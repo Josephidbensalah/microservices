@@ -2,9 +2,12 @@ package com.josephbytes.accounts.controller;
 
 import com.josephbytes.accounts.constants.AccountConstants;
 import com.josephbytes.accounts.dto.CustomerDto;
+import com.josephbytes.accounts.dto.ErrorResponseDto;
 import com.josephbytes.accounts.dto.ResponseDto;
 import com.josephbytes.accounts.service.IAccountService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -35,9 +38,17 @@ public class AccountController {
             summary = "Create a new account REST APi",
             description = "REST API to create a new Customer & Account in EasyBank"
     )
-    @ApiResponse(
-            responseCode = "201",
-            description = "Http Status Created"
+    @ApiResponses(
+            value = {
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "Http Status Created"
+                    ),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "Http Status Internal Server Error"
+                    )
+            }
     )
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
@@ -73,8 +84,17 @@ public class AccountController {
                             description = "Http Status OK"
                     ),
                     @ApiResponse(
+                            responseCode = "417",
+                            description = "Http Status Expectation Failed"
+                    ),
+                    @ApiResponse(
                             responseCode = "500",
-                            description = "Http Status Internal Server Error"
+                            description = "Http Status Internal Server Error",
+                            content = @Content(
+                                    schema = @Schema(
+                                        implementation = ErrorResponseDto.class
+                                    )
+                            )
                     )
             }
     )
@@ -87,8 +107,8 @@ public class AccountController {
                     .body(new ResponseDto(AccountConstants.STATUS_200, AccountConstants.MESSAGE_200));
         } else {
             return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ResponseDto(AccountConstants.STATUS_500, AccountConstants.MESSAGE_500));
+                    .status(HttpStatus.EXPECTATION_FAILED)
+                    .body(new ResponseDto(AccountConstants.STATUS_417, AccountConstants.MESSAGE_417_UPDATE));
         }
     }
 
@@ -101,6 +121,10 @@ public class AccountController {
                     @ApiResponse(
                             responseCode = "200",
                             description = "Http Status OK"
+                    ),
+                    @ApiResponse(
+                            responseCode = "417",
+                            description = "Http Status Expectation Failed"
                     ),
                     @ApiResponse(
                             responseCode = "500",
@@ -119,8 +143,8 @@ public class AccountController {
                     .body(new ResponseDto(AccountConstants.ACCOUNT_DELETED,AccountConstants.MESSAGE_200));
         } else {
             return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ResponseDto(AccountConstants.STATUS_500,AccountConstants.MESSAGE_500));
+                    .status(HttpStatus.EXPECTATION_FAILED)
+                    .body(new ResponseDto(AccountConstants.STATUS_417,AccountConstants.MESSAGE_417_DELETE));
         }
     }
 

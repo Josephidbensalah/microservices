@@ -1,16 +1,14 @@
-package com.josephbytes.accounts.dto;
+package com.josephbytes.loans.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
+import lombok.*;
 @Schema(name = "Response", description = "Schema to hold Response information")
 @Data @AllArgsConstructor
-public class ResponseDto {
-
+public class ResponseDTO {
     @Schema(description = "Status Code of the Response")
     private String statusCode;
 
     @Schema(description = "Status Message of the Response")
     private String statusMsg;
+
 }
