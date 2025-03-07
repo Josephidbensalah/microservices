@@ -2,6 +2,8 @@ package com.josephbytes.loans.service.impl;
 
 import com.josephbytes.loans.dto.LoansDto;
 import com.josephbytes.loans.entity.Loans;
+import com.josephbytes.loans.exception.LoanAlreadyExistsException;
+import com.josephbytes.loans.exception.LoanNotFoundException;
 import com.josephbytes.loans.mapper.LoansMapper;
 import com.josephbytes.loans.repository.LoanRepository;
 import com.josephbytes.loans.service.ILoanService;
@@ -17,10 +19,14 @@ public class LoanServiceImpl implements ILoanService {
 
     @Override
     public void createLoan(LoansDto loanDto) {
+        // check if loan already exists
+        loanRepository.findByMobileNumber(loanDto.getMobileNumber())
+                .ifPresent(l -> {
+                    throw new LoanAlreadyExistsException("Loan already exists with given mobile number " + loanDto.getMobileNumber());
+                });
         // create loan
         Loans loan = LoansMapper.mapToLoan(loanDto, new Loans());
         loanRepository.save(loan);
-
     }
 
     @Override
@@ -34,7 +40,7 @@ public class LoanServiceImpl implements ILoanService {
     @Override
     public LoansDto fetchLoan(String loanNumber) {
         Loans loan = loanRepository.findByLoanNumber(loanNumber)
-                .orElseThrow(() -> new RuntimeException("Loan not found"));
+                .orElseThrow(() -> new LoanNotFoundException("Loans", "loanNumber", loanNumber));
 
         return LoansMapper.mapToLoanDto(loan, new LoansDto());
 
@@ -46,7 +52,7 @@ public class LoanServiceImpl implements ILoanService {
         boolean isUpdated = false;
         if (loanDto != null){
             Loans loan = loanRepository.findByLoanNumber(loanDto.getLoanNumber())
-                    .orElseThrow(() -> new RuntimeException("Loan not found"));
+                    .orElseThrow(() -> new LoanNotFoundException("Loans", "loanNumber", loanDto.getLoanNumber()));
 
             LoansMapper.mapToLoan(loanDto, loan);
             loanRepository.save(loan);
@@ -57,10 +63,10 @@ public class LoanServiceImpl implements ILoanService {
 
 
     @Override
-    public boolean deleteLoan(String loanNumber) {
+    public boolean deleteLoan(String mobileNumber) {
         boolean isDeleted = false;
-        Loans loan = loanRepository.findByLoanNumber(loanNumber)
-                .orElseThrow(() -> new RuntimeException("Loan not found"));
+        Loans loan = loanRepository.findByMobileNumber(mobileNumber)
+                .orElseThrow(() -> new LoanNotFoundException("Loans", "mobileNumber", mobileNumber));
 
         loanRepository.delete(loan);
         isDeleted = true;

@@ -10,9 +10,9 @@ public interface ILoanService {
 
     List<LoansDto> getAllLoans();
 
-    LoansDto fetchLoan(String loanNumber);
+    LoansDto fetchLoan(String mobileNumber);
 
     boolean updateLoan(LoansDto loanDto);
 
-    boolean deleteLoan(String loanNumber);
+    boolean deleteLoan(String moneyNumber);
 }

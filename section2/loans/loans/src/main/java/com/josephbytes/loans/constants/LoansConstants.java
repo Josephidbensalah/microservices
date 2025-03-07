@@ -5,6 +5,8 @@ public class LoansConstants {
     private LoansConstants() {
     }
 
+    public static final String  HOME_LOAN = "Home Loan";
+    public static final int  NEW_LOAN_LIMIT = 1_00_000;
     public static final String LOAN_ACCOUNT_TYPE = "LOAN";
     public static final String LOAN_ACCOUNT_DESC = "Loan Account";
     public static final String LOAN_ACCOUNT_CREATED = "Loan Account Created";
