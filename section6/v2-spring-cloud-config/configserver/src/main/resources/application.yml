@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    #active: native
+    active: git
+  cloud:
+    config:
+      server:
+        #native:
+          #search-locations: "classpath:/config"
+          #search-locations: "file:///C://Users//pc//Documents//joseph-workspace//config"
+        git:
+          uri: "https://github.com/youssefidbensalah/josephbytes-config.git"
+          default-level: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+encrypt:
+  key: "CE82C419913B12C85583CDDD5A573"
+
+
+server:
+  port: 8071

@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+loans:
+  message: "Welcome to Easybank loans related Prod APIs"
+  contactDetails:
+    name: "Mutaz Ihssane - Product Owner"
+    email: "ihssane@easybank.com"
+  onCallSupport:
+    - (879) 345-6789
+    - (564) 123-4567

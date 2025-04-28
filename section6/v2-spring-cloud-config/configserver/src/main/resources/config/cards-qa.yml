@@ -1,0 +1,11 @@
+build:
+    version: "2.0"
+
+cards:
+  message: "Welcome to Easybank cards related QA APIs"
+  contactDetails:
+    name: "Samuel Bens - Qa Tester"
+    email: "samuel@easybank.com"
+  onCallSupport:
+    - (564) 123-4567
+    - (879) 123-4567

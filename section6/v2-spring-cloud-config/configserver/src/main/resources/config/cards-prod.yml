@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+cards:
+  message: "Welcome to Easybank cards related Prod APIs"
+  contactDetails:
+    name: "Junaid Khan - Product Owner"
+    email: "junaid@easybank.com"
+  onCallSupport:
+    - (888) 123-4567
+    - (999) 123-4567

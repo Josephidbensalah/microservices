@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to Easybank account related local APIs"
+  contactDetails:
+    name: "Joseph Bens - Developer"
+    email: "josephbens@easybank.com"
+  onCallSupport:
+    - (212( 654-3210
+    - (212) 123-4567

@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to Easybank accounts related QA APIs"
+  contactDetails:
+    name: "Jina Patel - QA Engineer"
+    email: "jinapatel@easybank.com"
+  onCallSupport:
+    - (32) 245-6789
+    - (32) 876-5432

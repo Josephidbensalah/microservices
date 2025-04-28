@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to Easybank accounts related prod APIs"
+  contactDetails:
+    name: "Houssein Nasser - Product Owner"
+    email: "houssein@easybank.com"
+  onCallSupport:
+    - (333) 876-5432
+    - (333) 745-6789
